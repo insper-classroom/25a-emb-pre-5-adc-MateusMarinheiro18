@@ -23,7 +23,7 @@ void data_task(void *p) {
     }
 }
 
-void tarefa_processo(void *p) {
+void process_task(void *p) {
     int dado = 0;
     int janela[5] = {0};
     int indice = 0;
@@ -40,7 +40,6 @@ void tarefa_processo(void *p) {
 
             if (contador < 5) contador++;
 
-            
             if (contador == 5) {
                 int media = soma / 5;
                 printf("Dado filtrado: %d\n", media);
@@ -49,6 +48,7 @@ void tarefa_processo(void *p) {
             vTaskDelay(pdMS_TO_TICKS(50));
         }
     }
+
 }
 
 int main() {
