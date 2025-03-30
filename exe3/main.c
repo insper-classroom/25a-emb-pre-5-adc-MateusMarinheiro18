@@ -31,7 +31,7 @@ void process_task(void *p) {
     int contador = 0;
 
     while (true) {
-        if (xQueueReceive(xFilaDados, &dado, 100)) {
+        if (xQueueReceive(xQueueData, &dado, 100)) {
             soma -= janela[indice];
             janela[indice] = dado;
             soma += dado;
