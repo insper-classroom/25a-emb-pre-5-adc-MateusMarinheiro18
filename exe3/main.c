@@ -28,11 +28,11 @@ void process_task(void *p) {
     int window[5] = {0}; 
     int index = 0;       
     int sum = 0;         
-    int count = 0;       
+    bool window_filled = false; 
 
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
-            if (count >= 5) {
+            if (window_filled) {
                 sum -= window[index];
             }
             
@@ -41,12 +41,15 @@ void process_task(void *p) {
             
             index = (index + 1) % 5;
             
-            if (count < 5) {
-                count++;
+            if (!window_filled && index == 0) {
+                window_filled = true;
             }
             
-            int filtered_value = sum / count;
-            printf("%d\n", filtered_value);
+            if (window_filled) {
+                int filtered_value = sum / 5;
+                printf("%d\n", filtered_value);
+            }
+            
             vTaskDelay(pdMS_TO_TICKS(50));
         }
     }
