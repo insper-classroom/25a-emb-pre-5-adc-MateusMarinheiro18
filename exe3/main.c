@@ -40,6 +40,7 @@ void tarefa_processo(void *p) {
 
             if (contador < 5) contador++;
 
+            
             if (contador == 5) {
                 int media = soma / 5;
                 printf("Dado filtrado: %d\n", media);
