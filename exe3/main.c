@@ -38,12 +38,8 @@ void process_task(void *p) {
 
             indice = (indice + 1) % 5;
 
-            if (contador < 5) contador++;
-
-            if (contador == 5) {
-                int media = soma / 5;
-                printf("Dado filtrado: %d\n", media);
-            }
+            int media = soma / 5;
+            printf("Dado filtrado: %d\n", media);
 
             vTaskDelay(pdMS_TO_TICKS(50));
         }
